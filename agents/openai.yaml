@@ -1,7 +1,7 @@
 interface:
   display_name: "Document Visualizer"
-  short_description: "Turn documents into structured HTML/SVG visuals"
+  short_description: "Create source-backed HTML/SVG document visuals"
   icon_small: "./assets/document-visualizer-small.svg"
   icon_large: "./assets/document-visualizer-small.svg"
   brand_color: "#38BDF8"
-  default_prompt: "Use $document-visualizer to analyze this document and turn it into a polished HTML or SVG visual."
+  default_prompt: "Use $document-visualizer to turn this source document into a polished single-page HTML or SVG visual."

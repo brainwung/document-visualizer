@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document Visualizer</title>
+  <style>
+    :root {
+      --outer: #ededed;
+      --page: #f9f9f9;
+      --module: #ffffff;
+      --ink: #333333;
+      --muted: #666666;
+      --weak: #999999;
+      --accent: #e62828;
+      --accent-soft: #ffedeb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--outer);
+      color: var(--ink);
+      font-family: "Alibaba PuHuiTi", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    .page {
+      width: 1080px;
+      margin: 0 auto;
+      padding: 64px 58px 72px;
+      background: var(--page);
+    }
+
+    .header,
+    .section {
+      width: 100%;
+    }
+
+    .section {
+      margin-top: 60px;
+    }
+
+    .section__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    .section__title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .section__note {
+      color: var(--weak);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 300;
+    }
+
+    .module {
+      padding: 28px;
+      border-radius: 8px;
+      background: var(--module);
+    }
+
+    @media (max-width: 1080px) {
+      .page {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <!-- Replace with source-backed title and summary. Do not add meta cards unless requested. -->
+    </header>
+
+    <section class="section">
+      <div class="section__head">
+        <h2 class="section__title">模块标题</h2>
+        <div class="section__note">OPTIONAL ENGLISH NOTE</div>
+      </div>
+      <div class="module">
+        <!-- Replace with source-backed content. -->
+      </div>
+    </section>
+  </main>
+</body>
+</html>
