@@ -57,7 +57,7 @@ description: Use when Codex needs to convert a provided document, note, report, 
 6. **验证并迭代。**
    - 按 [`RULES.md`](RULES.md) 的 QA 清单检查输出。
    - SVG 输出运行 [`scripts/svg_check.py`](scripts/svg_check.py)。
-   - HTML 输出运行 [`scripts/html_check.py`](scripts/html_check.py)，并优先用浏览器检查宽度、溢出、模块对齐、文字层级和占位内容。
+   - HTML 输出运行 [`scripts/html_check.py`](scripts/html_check.py)，并优先用浏览器检查宽度、溢出、主副标题与主模块宽度、模块对齐、文字层级和占位内容。
    - Skill 本身更新后运行 [`scripts/skill_check.py`](scripts/skill_check.py)，检查 frontmatter、文件结构和关键引用。
    - 用户明确要求“先不要渲染 PNG”或“先直接出 HTML”时，不要生成最终图片。
 
