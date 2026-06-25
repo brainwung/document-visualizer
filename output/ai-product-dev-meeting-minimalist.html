@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 产品开发会议纪要</title>
+  <style>
+    @font-face {
+      font-family: "DIN";
+      src: url("../assets/fonts/D-DIN-PRO-700-Bold.otf") format("opentype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Alibaba PuHuiTi";
+      src: url("../assets/fonts/AlibabaPuHuiTi-3-35-Thin.ttf") format("truetype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Alibaba PuHuiTi";
+      src: url("../assets/fonts/AlibabaPuHuiTi-3-55-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Alibaba PuHuiTi";
+      src: url("../assets/fonts/AlibabaPuHuiTi-3-85-Bold.ttf") format("truetype");
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --outer: #ededed;
+      --page: #f9f9f9;
+      --module: #ffffff;
+      --ink: #333333;
+      --muted: #666666;
+      --weak: #999999;
+      --accent: #e62828;
+      --accent-soft: #ffedeb;
+      --soft-gray: #f3f3f3;
+      --lighter-gray: #f8f8f8;
+      --shadow: 0 18px 42px rgba(51, 51, 51, .07);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--outer);
+      color: var(--ink);
+      font-family: "Alibaba PuHuiTi", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    .page {
+      width: 1080px;
+      margin: 0 auto;
+      padding: 66px 58px 72px;
+      background: var(--page);
+    }
+
+    .header,
+    .section {
+      width: 100%;
+    }
+
+    .header {
+      margin-bottom: 60px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 62px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .subtitle {
+      width: 100%;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .meeting-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 24px;
+      color: var(--weak);
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .meeting-line strong {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .section {
+      margin-top: 60px;
+    }
+
+    .section__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .section__title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .section__note {
+      color: var(--weak);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 300;
+      white-space: nowrap;
+    }
+
+    .module {
+      padding: 30px;
+      border-radius: 8px;
+      background: var(--module);
+      box-shadow: var(--shadow);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: 6px 1fr;
+      gap: 18px;
+      padding: 30px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      align-items: start;
+    }
+
+    .summary::before {
+      content: "";
+      width: 6px;
+      height: 37.5px;
+      background: var(--accent);
+    }
+
+    .summary h2 {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 30px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .summary p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .decision-card {
+      min-height: 196px;
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--soft-gray);
+    }
+
+    .decision-card h3 {
+      margin: 0 0 18px;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .kv {
+      display: grid;
+      gap: 12px;
+    }
+
+    .kv-row {
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .kv-row b {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .architecture {
+      display: grid;
+      gap: 18px;
+    }
+
+    .layer {
+      display: grid;
+      grid-template-columns: 68px 156px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 20px 22px;
+      border-radius: 8px;
+      background: var(--lighter-gray);
+    }
+
+    .layer:nth-child(2) {
+      background: var(--soft-gray);
+    }
+
+    .layer__num {
+      color: var(--accent);
+      font-family: DIN, "Arial Narrow", Arial, sans-serif;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .layer__title {
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .layer__body {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .feature-card {
+      min-height: 224px;
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--soft-gray);
+    }
+
+    .feature-card h3 {
+      margin: 0 0 18px;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .feature-card ul,
+    .risk-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-card li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .feature-card li::before,
+    .risk-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .72em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .feature-card b,
+    .risk-list b {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0;
+    }
+
+    .task {
+      display: grid;
+      grid-template-columns: 128px 1fr 150px;
+      gap: 18px;
+      align-items: center;
+      min-height: 78px;
+      padding: 18px 0;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .task:first-child {
+      padding-top: 0;
+    }
+
+    .task:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .task__time {
+      color: var(--accent);
+      font-size: 21px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .task__body {
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.4;
+      font-weight: 800;
+    }
+
+    .task__owner {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.4;
+      text-align: right;
+      font-weight: 400;
+    }
+
+    .risk-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .risk-list li {
+      position: relative;
+      padding: 18px 18px 18px 34px;
+      border-radius: 8px;
+      background: var(--lighter-gray);
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .risk-list li::before {
+      left: 18px;
+      top: 28px;
+    }
+
+    .next-meeting {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-top: 18px;
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+    }
+
+    .next-meeting__date {
+      color: var(--accent);
+      font-family: DIN, "Arial Narrow", Arial, sans-serif;
+      font-size: 34px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    .next-meeting__topic {
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
+    @media (max-width: 1080px) {
+      .page {
+        width: 100%;
+        padding: 54px 36px 60px;
+      }
+
+      h1 {
+        font-size: 52px;
+      }
+
+      .decision-grid,
+      .feature-grid,
+      .risk-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .task {
+        grid-template-columns: 110px 1fr;
+      }
+
+      .task__owner {
+        grid-column: 2;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        padding: 42px 22px 48px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .subtitle {
+        font-size: 17px;
+      }
+
+      .section {
+        margin-top: 48px;
+      }
+
+      .section__head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .module,
+      .summary {
+        padding: 24px;
+      }
+
+      .layer,
+      .task,
+      .next-meeting {
+        grid-template-columns: 1fr;
+      }
+
+      .task__owner {
+        grid-column: auto;
+      }
+
+      .layer {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <p class="eyebrow">MEETING NOTES</p>
+      <h1>AI 产品开发会议纪要</h1>
+      <p class="subtitle">讨论新一代 AI 助手产品的核心功能和技术架构方案。</p>
+      <div class="meeting-line">
+        <span><strong>会议时间</strong>：2026年6月25日</span>
+        <span><strong>参会人员</strong>：产品经理、技术负责人、设计师、前端开发</span>
+      </div>
+    </header>
+
+    <section class="summary" aria-label="核心结论">
+      <div>
+        <h2>核心结论</h2>
+        <p>产品定位为面向知识工作者、开发者、内容创作者的新一代 AI 助手，核心价值是提供上下文感知的智能协作能力，差异化来自多模态理解、长期记忆与工作流集成。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section__head">
+        <h2 class="section__title">核心决策</h2>
+        <div class="section__note">DECISIONS 01</div>
+      </div>
+      <div class="decision-grid">
+        <article class="decision-card">
+          <h3>产品定位</h3>
+          <div class="kv">
+            <div class="kv-row"><b>目标用户</b><span>知识工作者、开发者、内容创作者</span></div>
+            <div class="kv-row"><b>核心价值</b><span>提供上下文感知的智能协作能力</span></div>
+            <div class="kv-row"><b>差异化</b><span>多模态理解 + 长期记忆 + 工作流集成</span></div>
+          </div>
+        </article>
+        <article class="decision-card">
+          <h3>技术架构</h3>
+          <div class="kv">
+            <div class="kv-row"><b>结构</b><span>采用三层架构设计</span></div>
+            <div class="kv-row"><b>层级</b><span>感知层、理解层、执行层</span></div>
+          </div>
+        </article>
+        <article class="decision-card">
+          <h3>关键功能模块</h3>
+          <div class="kv">
+            <div class="kv-row"><b>模块</b><span>记忆系统、工具集成、安全机制</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section__head">
+        <h2 class="section__title">技术架构</h2>
+        <div class="section__note">ARCHITECTURE 02</div>
+      </div>
+      <div class="module">
+        <div class="architecture">
+          <div class="layer">
+            <div class="layer__num">01</div>
+            <div class="layer__title">感知层</div>
+            <div class="layer__body">多模态输入处理：文本、图像、语音。</div>
+          </div>
+          <div class="layer">
+            <div class="layer__num">02</div>
+            <div class="layer__title">理解层</div>
+            <div class="layer__body">上下文分析和意图识别。</div>
+          </div>
+          <div class="layer">
+            <div class="layer__num">03</div>
+            <div class="layer__title">执行层</div>
+            <div class="layer__body">任务编排和工具调用。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section__head">
+        <h2 class="section__title">关键功能模块</h2>
+        <div class="section__note">MODULES 03</div>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>记忆系统</h3>
+          <ul>
+            <li><b>短期记忆</b>：会话上下文（128K tokens）</li>
+            <li><b>长期记忆</b>：用户偏好和历史交互</li>
+            <li><b>知识图谱</b>：实体关系和领域知识</li>
+          </ul>
+        </article>
+        <article class="feature-card">
+          <h3>工具集成</h3>
+          <ul>
+            <li>代码编辑器集成</li>
+            <li>文件系统访问</li>
+            <li>Web 搜索和数据获取</li>
+            <li>第三方 API 调用</li>
+          </ul>
+        </article>
+        <article class="feature-card">
+          <h3>安全机制</h3>
+          <ul>
+            <li>敏感信息过滤</li>
+            <li>操作权限控制</li>
+            <li>审计日志记录</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section__head">
+        <h2 class="section__title">待办事项</h2>
+        <div class="section__note">ACTION ITEMS 04</div>
+      </div>
+      <div class="module">
+        <div class="timeline">
+          <div class="task">
+            <div class="task__time">本周完成</div>
+            <div class="task__body">技术原型验证</div>
+            <div class="task__owner">负责人：技术负责人</div>
+          </div>
+          <div class="task">
+            <div class="task__time">两周内</div>
+            <div class="task__body">UI/UX 设计初稿</div>
+            <div class="task__owner">负责人：设计师</div>
+          </div>
+          <div class="task">
+            <div class="task__time">三周内</div>
+            <div class="task__body">第一版 MVP 开发</div>
+            <div class="task__owner">负责人：前端开发</div>
+          </div>
+          <div class="task">
+            <div class="task__time">一个月内</div>
+            <div class="task__body">内部测试和迭代</div>
+            <div class="task__owner">负责人：未提供</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section__head">
+        <h2 class="section__title">风险与下次会议</h2>
+        <div class="section__note">RISKS 05</div>
+      </div>
+      <div class="module">
+        <div class="risk-grid">
+          <ul class="risk-list">
+            <li><b>性能风险</b>：长上下文处理的延迟问题</li>
+            <li><b>成本控制</b>：API 调用费用需要优化</li>
+          </ul>
+          <ul class="risk-list">
+            <li><b>用户体验</b>：复杂功能的简化呈现</li>
+            <li><b>数据安全</b>：用户隐私保护机制</li>
+          </ul>
+        </div>
+        <div class="next-meeting">
+          <div class="next-meeting__date">2026.07.02</div>
+          <div class="next-meeting__topic">技术原型演示和设计方案评审</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
